@@ -2,9 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "extensions_CustomScript_fileUris": {
-      "type": "Array"
-    },
     "extensions_CustomScript_storageAccountName": {
       "type": "SecureString"
     },
@@ -103,13 +100,13 @@
         "tier": "Regional"
       },
       "properties": {
-        "ipAddress": "172.167.166.37",
+        "ipAddress": "172.167.183.133",
         "publicIPAddressVersion": "IPv4",
         "publicIPAllocationMethod": "Dynamic",
         "idleTimeoutInMinutes": 4,
         "dnsSettings": {
-          "domainNameLabel": "matetask754112015",
-          "fqdn": "matetask754112015.uksouth.cloudapp.azure.com"
+          "domainNameLabel": "matetask640565140",
+          "fqdn": "matetask640565140.uksouth.cloudapp.azure.com"
         },
         "ipTags": []
       }
@@ -164,12 +161,12 @@
           },
           "osDisk": {
             "osType": "Linux",
-            "name": "[concat(parameters('virtualMachines_matebox_name'), '_OsDisk_1_8984309ea18447349355bb64a638411a')]",
+            "name": "[concat(parameters('virtualMachines_matebox_name'), '_OsDisk_1_6c7aa95fb72b40f39f5f5d59453e4ecd')]",
             "createOption": "FromImage",
             "caching": "ReadWrite",
             "managedDisk": {
               "storageAccountType": "Premium_LRS",
-              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_matebox_name'), '_OsDisk_1_8984309ea18447349355bb64a638411a'))]"
+              "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_matebox_name'), '_OsDisk_1_6c7aa95fb72b40f39f5f5d59453e4ecd'))]"
             },
             "deleteOption": "Detach",
             "diskSizeGB": 30
@@ -223,7 +220,9 @@
         "type": "CustomScript",
         "typeHandlerVersion": "2.1",
         "settings": {
-          "fileUris": "[parameters('extensions_CustomScript_fileUris')]"
+          "fileUris": [
+            "https://raw.githubusercontent.com/Darya-Savchenko/azure_task_12_deploy_app_with_vm_extention/main/install-app.sh"
+          ]
         },
         "protectedSettings": {
           "storageAccountName": "[parameters('extensions_CustomScript_storageAccountName')]",
